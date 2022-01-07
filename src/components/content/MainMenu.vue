@@ -1,6 +1,6 @@
 <template>
       <tab-bar1>
-      <tab-bar-item path="/A" activeColor="blue">
+      <tab-bar-item path="/home" activeColor="blue">
         <img slot="item-icon" src="~assets/img/tabbar/bird.png" alt="">
         <img slot="item-icon-active" src="~assets/img/tabbar/msg.png" alt="">
         <div slot="item-text">首页</div>
