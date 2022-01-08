@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <p>abc123</p>
+    <router-view></router-view>
     <main-menu></main-menu>
   </div>
 </template>
 
 <script>
-import MainMenu from 'components/content/MainMenu.vue'
+import MainMenu from '@/components/content/MainMenu.vue'
 
 export default {
   name: 'App',
@@ -17,5 +17,5 @@ export default {
 </script>
 
 <style>
-  @import "assets/css/base.css"
+  @import "./assets/css/base.css"
 </style>
