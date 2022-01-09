@@ -1,5 +1,5 @@
 <template>
-      <tab-bar1>
+      <tab-bar>
       <tab-bar-item path="/home" activeColor="blue">
         <img slot="item-icon" src="@/assets/img/tabbar/bird.png" alt="">
         <img slot="item-icon-active" src="@/assets/img/tabbar/msg.png" alt="">
@@ -20,17 +20,16 @@
         <img slot="item-icon-active" src="@/assets/img/tabbar/msg.png" alt="">
         <div slot="item-text">我的</div>
       </tab-bar-item>
-    </tab-bar1>
+    </tab-bar>
 </template>
 
 <script>
-import TabBar1 from "@/components/common/tabbar/TabBar1.vue"
-import TabBarItem from "@/components/common/tabbar/TabBarItem.vue"
+import {TabBar, TabBarItem} from '@/components/common/tabbar'
 
 export default {
   name: "MainMenu",
   components: {
-    TabBar1,TabBarItem
+    TabBar,TabBarItem
   }
 };
 </script>

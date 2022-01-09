@@ -3,13 +3,14 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Home from '@/views/home/Home.vue'
-// const Home = ()=> import ('@/views/home/Home.vue')
-
 const routes = [
     {
+        path: '/',
+        redirect: '/home'
+    },
+    {
         path: '/home',
-        component: Home
+        component: () => import('@/views/home/Home.vue')
     }
 ]
 export default new Router({
