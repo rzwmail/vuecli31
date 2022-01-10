@@ -161,7 +161,7 @@ export default {
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
 }
-.active {
+.indicator .active {
   background-color: rgba(212, 62, 46, 1);
 }
 </style>

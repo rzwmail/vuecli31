@@ -47,7 +47,7 @@ export default {
   vertical-align: middle;
   margin-top: 2px;
 }
-.active{
+.tab-bar-item .active{
   color: red;
 }
 </style>

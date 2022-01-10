@@ -11,7 +11,11 @@ const routes = [
     {
         path: '/home',
         component: () => import('@/views/home/Home.vue')
-    }
+    },
+    {
+        path: '/category',
+        component: () => import('@/views/category/Category.vue')
+    },
 ]
 export default new Router({
     routes,
