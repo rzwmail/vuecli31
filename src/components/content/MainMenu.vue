@@ -23,7 +23,7 @@
     </tab-bar>
 </template>
 
-<script>
+<script scoped>
 import {TabBar, TabBarItem} from '@/components/common/tabbar'
 
 export default {

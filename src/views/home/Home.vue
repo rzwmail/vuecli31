@@ -1,15 +1,28 @@
 <template>
   <div id="home">
-    <nav-bar class="home-nav">
-      <div slot="center">购物街</div>
-    </nav-bar>
-    <home-swiper :banners="banners" />
-    <recommend-view :recommends="recommends" />
-    <feature></feature>
-    <tab-control :titles="titles" class="tab-control" @tabClick="tabClick" />
-    <goods-list :goodsList="goods[currentType].list"/>
-    <br /><br /><br />
-    <br /><br /><br />
+    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+    
+    <scroll class="content" ref="myscroll">
+      <home-swiper :banners="banners" />
+      <recommend-view :recommends="recommends" />
+      <feature></feature>
+      <tab-control :titles="titles" class="tab-control" @tabClick="tabClick" />
+      <goods-list :goodsList="goods[currentType].list" />
+    </scroll>
+
+    <back-top @click.native="backClick"/>
+    <ul>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+    </ul>
   </div>
 </template>
 
@@ -23,6 +36,8 @@ import RecommendView from "./childComps/RecommendView.vue";
 import Feature from "./childComps/Feature.vue";
 
 import { getHomeMultiData, getHomeGoods } from "@/network/home.js";
+import Scroll from "../../components/common/scroll/Scroll.vue";
+import BackTop from '../../components/common/BackTop.vue';
 
 export default {
   name: "Home",
@@ -32,27 +47,29 @@ export default {
     RecommendView,
     Feature,
     TabControl,
-    GoodsList
+    GoodsList,
+    Scroll,
+    BackTop,
   },
-  data(){
+  data() {
     return {
       result: null,
       banners: [],
       recommends: [],
       titles: ["流行", "新款", "精选"],
       goods: {
-        'pop': { page: 0, list: [] },
-        'new': { page: 0, list: [] },
-        'sell': { page: 0, list: [] },
+        pop: { page: 0, list: [] },
+        new: { page: 0, list: [] },
+        sell: { page: 0, list: [] },
       },
-      currentType: 'pop',
+      currentType: "pop",
     };
   },
   created() {
-    this.getMultiData()
-    this.getGoods("pop")
-    this.getGoods("new")
-    this.getGoods("sell")
+    this.getMultiData();
+    this.getGoods("pop");
+    this.getGoods("new");
+    this.getGoods("sell");
   },
   methods: {
     getMultiData() {
@@ -63,33 +80,37 @@ export default {
     },
 
     getGoods(kind) {
-      const page = this.goods[kind].page + 1
+      const page = this.goods[kind].page + 1;
       getHomeGoods(kind, page).then((res) => {
-        this.goods[kind].list.push(...res)
+        this.goods[kind].list.push(...res);
       });
-      console.log(this.goods.pop.list);
     },
 
-    tabClick(index){
-      switch(index){
-        case 0: 
-          this.currentType='pop'
-          break
+    tabClick(index) {
+      switch (index) {
+        case 0:
+          this.currentType = "pop";
+          break;
         case 1:
-          this.currentType='new'
-          break
-        case 2: 
-          this.currentType='sell'
-          break
+          this.currentType = "new";
+          break;
+        case 2:
+          this.currentType = "sell";
+          break;
       }
+    },
+    backClick(){
+      this.$refs.myscroll.scrollTo()
     }
   },
 };
 </script>
 
-<style>
+<style scoped>
 #home {
-  padding-top: 44px;
+  /* padding-top: 44px; */
+  height: 100vh;
+  position: relative
 }
 .home-nav {
   background-color: rgb(236, 130, 148);
@@ -105,5 +126,10 @@ export default {
   top: 44px;
   background-color: #ddd;
   z-index: 8;
+}
+.content {
+  margin-top: 44px;
+  height: calc(100% - 93px);
+  overflow: hidden;
 }
 </style>

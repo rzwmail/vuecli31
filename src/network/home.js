@@ -4,7 +4,7 @@ import {
 
 export function getHomeGoods(type, page) {
   return request({
-    url: '/books'
+    url: '/'
   }).then(() => {
     if (type === 'pop') {
 		return [{
@@ -90,7 +90,7 @@ export function getHomeGoods(type, page) {
 
 export function getHomeMultiData() {
   return request({
-    url: '/books'
+    url: '/'
   }).then(() => {
     return {
       banners: [{
