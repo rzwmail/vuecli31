@@ -13,7 +13,7 @@ export default {
   props: {
     probeType: {
       type: Number,
-      default: 2,
+      default: 0,
     },
     isPullUpload: {
       type: Boolean,
@@ -27,12 +27,17 @@ export default {
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.mywrapper, {
-      probeType: 2,
+      probeType: this.probeType,
       click: true,
-      pullUpLoad: true,
+      pullUpLoad: this.isPullUpload,
       observeDOM: true,
-      tap: true,
-    });
+    })
+    this.scroll.on('scroll', position =>{
+      this.$emit('scroll',position)
+    })
+    this.scroll.on('pullingUp', () =>{
+      this.$emit('pullingUp')
+    })
   },
   methods: {
     scrollTo(x = 0, y = 0, time = 500) {

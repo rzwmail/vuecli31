@@ -1,8 +1,16 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    
-    <scroll class="content" ref="myscroll">
+
+    <scroll
+      class="content"
+      ref="myscroll"
+      :probe-type="3"
+      :isPullUpload="isPullUpload"
+      @scroll="contentScroll"
+      @pullingUp="loadMore"
+
+    >
       <home-swiper :banners="banners" />
       <recommend-view :recommends="recommends" />
       <feature></feature>
@@ -10,15 +18,8 @@
       <goods-list :goodsList="goods[currentType].list" />
     </scroll>
 
-    <back-top @click.native="backClick"/>
+    <back-top @click.native="backClick" v-show="isBackTopShow" />
     <ul>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
       <li>111</li>
       <li>111</li>
       <li>111</li>
@@ -37,7 +38,7 @@ import Feature from "./childComps/Feature.vue";
 
 import { getHomeMultiData, getHomeGoods } from "@/network/home.js";
 import Scroll from "../../components/common/scroll/Scroll.vue";
-import BackTop from '../../components/common/BackTop.vue';
+import BackTop from "../../components/common/BackTop.vue";
 
 export default {
   name: "Home",
@@ -63,6 +64,8 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
+      isBackTopShow: false,
+      isPullUpload: true,
     };
   },
   created() {
@@ -99,18 +102,34 @@ export default {
           break;
       }
     },
-    backClick(){
-      this.$refs.myscroll.scrollTo()
+    backClick() {
+      this.$refs.myscroll.scrollTo();
+    },
+    contentScroll(position) {
+      if(position.y <-300 ){
+        this.isBackTopShow = true
+      }else {
+        this.isBackTopShow = false 
+      }
+    },
+    loadMore(){
+      console.log(123)
+      this.getGoods(this.currentType)
+      this.finishPullUp()
+    },
+    finishPullUp(){
+      this.$refs.myscroll.scroll.finishPullUp()
     }
+
   },
 };
-</script>
+</script> 
 
 <style scoped>
 #home {
   /* padding-top: 44px; */
   height: 100vh;
-  position: relative
+  position: relative;
 }
 .home-nav {
   background-color: rgb(236, 130, 148);
@@ -129,7 +148,7 @@ export default {
 }
 .content {
   margin-top: 44px;
-  height: calc(100% - 93px);
+  height: calc(100vh - 93px);
   overflow: hidden;
 }
 </style>

@@ -1,74 +1,66 @@
 <template>
-  <div class="wrapper">
-    <ul>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
-        <li>this is list</li>
+  <scroll class="content" :probe-type="1">
+    <ul >
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>th11111111</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>th2222222ist</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>thi3333ist</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>this is list</li>
+      <li>thi5555st</li>
     </ul>
-  </div>
+  </scroll>
 </template>
 
 <script>
-// import BScroll from 'better-scroll'
+import Scroll from "../../components/common/scroll/Scroll.vue";
 
 export default {
-    mounted(){
-    //     console.log(document.querySelector('.wrapper'));
-    //    const b = new BScroll(document.querySelector('.wrapper'),{probeType: 2, click: true, pullUpLoad: true})
-    //     // .on('scroll', p=>console.log())
-    //     .on('pullingUp',()=>{console.log(11111); b.finishPullUp() })
-
-    }
-}
+  name: 'category',
+  components: { Scroll },
+};
 </script>
 
 <style scoped>
-    .wrapper {
-        height: 150px;
-        background-color: red;
-        /* overflow: hidden;
-        overflow-y: scroll; */
-
-    }
+.content {
+  margin-top: 44px;
+  height: calc(100vh - 93px);
+  overflow: hidden;
+}
 </style>
