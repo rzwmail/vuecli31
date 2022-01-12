@@ -1,7 +1,14 @@
 <template>
   <div id="home">
-    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-
+    <nav-bar class="home-nav" ref="mynavbar"
+      ><div slot="center">购物街</div></nav-bar
+    >
+    <tab-control
+      :titles="titles"
+      class="tab-control1"
+      @tabClick="tabClick"
+      ref="mytabcontrol"
+    />
     <scroll
       class="content"
       ref="myscroll"
@@ -9,12 +16,17 @@
       :isPullUpload="isPullUpload"
       @scroll="contentScroll"
       @pullingUp="loadMore"
-
     >
-      <home-swiper :banners="banners" />
+      <home-swiper :banners="banners" @swiperImgLoad="swiperImgLoad" />
       <recommend-view :recommends="recommends" />
-      <feature></feature>
-      <tab-control :titles="titles" class="tab-control" @tabClick="tabClick" />
+      <feature />
+      <tab-control
+        :titles="titles"
+        class="tab-control"
+        @tabClick="tabClick"
+        ref="mytabcontrol"
+      />
+
       <goods-list :goodsList="goods[currentType].list" />
     </scroll>
 
@@ -28,9 +40,9 @@
 </template>
 
 <script>
-import NavBar from "@/components/common/navbar/NavBar.vue";
-import TabControl from "@/components/content/TabControl.vue";
-import GoodsList from "@/components/content/goods/GoodsList.vue";
+import NavBar from "../../components/common/navbar/NavBar.vue";
+import TabControl from "../../components/content/TabControl.vue";
+import GoodsList from "../../components/content/goods/GoodsList.vue";
 
 import HomeSwiper from "./childComps/HomeSwiper.vue";
 import RecommendView from "./childComps/RecommendView.vue";
@@ -39,6 +51,7 @@ import Feature from "./childComps/Feature.vue";
 import { getHomeMultiData, getHomeGoods } from "@/network/home.js";
 import Scroll from "../../components/common/scroll/Scroll.vue";
 import BackTop from "../../components/common/BackTop.vue";
+import { debounce } from "../../common/utils.js";
 
 export default {
   name: "Home",
@@ -66,6 +79,8 @@ export default {
       currentType: "pop",
       isBackTopShow: false,
       isPullUpload: true,
+      tabOffsetTop: 0,
+      isTabFixed: false,
     };
   },
   created() {
@@ -73,6 +88,13 @@ export default {
     this.getGoods("pop");
     this.getGoods("new");
     this.getGoods("sell");
+  },
+  mounted() {
+    let func = function (a, b) {
+      console.log(112233, a);
+    };
+    const refresh = debounce(func, 1000);
+    // this.$bus.$on('imgloaded', (msg)=>{console.log(msg); refresh(999,888)})
   },
   methods: {
     getMultiData() {
@@ -106,49 +128,49 @@ export default {
       this.$refs.myscroll.scrollTo();
     },
     contentScroll(position) {
-      if(position.y <-300 ){
-        this.isBackTopShow = true
-      }else {
-        this.isBackTopShow = false 
-      }
+      //判断回到顶部是否显示
+      this.isBackTopShow = position.y < -400 ? true : false;
+      //判断选项是否吸顶
+      this.isTabFixed = -position.y > this.tabOffsetTop ? true : false;
     },
-    loadMore(){
-      console.log(123)
-      this.getGoods(this.currentType)
-      this.finishPullUp()
+    loadMore() {
+      this.getGoods(this.currentType);
+      this.finishPullUp();
     },
-    finishPullUp(){
-      this.$refs.myscroll.scroll.finishPullUp()
-    }
-
+    finishPullUp() {
+      this.$refs.myscroll.scroll.refresh();
+      this.$refs.myscroll.scroll.finishPullUp();
+    },
+    swiperImgLoad() {
+      this.tabOffsetTop = this.$refs.mytabcontrol.$el.offsetTop;
+      console.log(this.tabOffsetTop);
+    },
   },
 };
 </script> 
 
 <style scoped>
 #home {
-  /* padding-top: 44px; */
   height: 100vh;
   position: relative;
 }
 .home-nav {
   background-color: rgb(236, 130, 148);
   color: white;
-  position: fixed;
-  z-index: 9;
-  left: 0;
-  top: 0;
-  right: 0;
-}
-.tab-control {
-  position: sticky;
-  top: 44px;
-  background-color: #ddd;
-  z-index: 8;
 }
 .content {
-  margin-top: 44px;
-  height: calc(100vh - 93px);
+  /* height: calc(100vh - 93px);
+  overflow: hidden; */
   overflow: hidden;
+
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+}
+.tab-control1 {
+  position: relative;
+  z-index: 9;
 }
 </style>

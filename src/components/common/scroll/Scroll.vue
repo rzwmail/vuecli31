@@ -31,17 +31,22 @@ export default {
       click: true,
       pullUpLoad: this.isPullUpload,
       observeDOM: true,
+      observeImage: true
     })
-    this.scroll.on('scroll', position =>{
-      this.$emit('scroll',position)
-    })
-    this.scroll.on('pullingUp', () =>{
-      this.$emit('pullingUp')
-    })
+    if(this.probeType >=2 ){
+      this.scroll.on('scroll', position =>{
+        this.$emit('scroll',position)
+      })
+    }
+    if (this.isPullUpload){
+      this.scroll.on('pullingUp', () =>{
+        this.$emit('pullingUp')
+      })
+    }
   },
   methods: {
     scrollTo(x = 0, y = 0, time = 500) {
-      this.scroll.scrollTo(x, y, time);
+      this.scroll && this.scroll.scrollTo(x, y, time);
     },
   },
 };
