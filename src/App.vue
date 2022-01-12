@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <main-menu></main-menu>
   </div>
 </template>
 
 <script>
-import MainMenu from '@/components/content/MainMenu.vue'
+import MainMenu from "@/components/content/MainMenu.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    MainMenu
-  }
-}
+    MainMenu,
+  },
+};
 </script>
 
 <style>
-  @import "./assets/css/base.css"
+@import "./assets/css/base.css";
 </style>

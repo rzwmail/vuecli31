@@ -7,7 +7,8 @@
       :titles="titles"
       class="tab-control1"
       @tabClick="tabClick"
-      ref="mytabcontrol"
+      ref="mytabcontrol1"
+      v-show="isTabFixed"
     />
     <scroll
       class="content"
@@ -24,7 +25,7 @@
         :titles="titles"
         class="tab-control"
         @tabClick="tabClick"
-        ref="mytabcontrol"
+        ref="mytabcontrol2"
       />
 
       <goods-list :goodsList="goods[currentType].list" />
@@ -81,6 +82,7 @@ export default {
       isPullUpload: true,
       tabOffsetTop: 0,
       isTabFixed: false,
+      saveY: 0,
     };
   },
   created() {
@@ -95,6 +97,13 @@ export default {
     };
     const refresh = debounce(func, 1000);
     // this.$bus.$on('imgloaded', (msg)=>{console.log(msg); refresh(999,888)})
+  },
+  activated(){
+    this.$refs.myscroll.scrollTo(0,this.saveY)
+    this.$refs.myscroll.refresh()
+  },
+  deactivated(){
+    this.saveY = this.$refs.myscroll.scroll.y
   },
   methods: {
     getMultiData() {
@@ -123,6 +132,8 @@ export default {
           this.currentType = "sell";
           break;
       }
+      this.$refs.mytabcontrol1.currentIndex = index
+      this.$refs.mytabcontrol2.currentIndex  = index
     },
     backClick() {
       this.$refs.myscroll.scrollTo();
@@ -142,7 +153,7 @@ export default {
       this.$refs.myscroll.scroll.finishPullUp();
     },
     swiperImgLoad() {
-      this.tabOffsetTop = this.$refs.mytabcontrol.$el.offsetTop;
+      this.tabOffsetTop = this.$refs.mytabcontrol2.$el.offsetTop;
       console.log(this.tabOffsetTop);
     },
   },

@@ -31,7 +31,7 @@ export default {
       click: true,
       pullUpLoad: this.isPullUpload,
       observeDOM: true,
-      observeImage: true
+      observeImage: true,
     })
     if(this.probeType >=2 ){
       this.scroll.on('scroll', position =>{
