@@ -8,68 +8,33 @@ export function getHomeGoods(type, page) {
   }).then(() => {
     if (type === 'pop') {
 		return [{
+			id: 1,
 			link: '#',
 			title: 'bbbb',
 			img: 'https://rpic.douyucdn.cn/asrpic/210831/1126960_1617.png/dy1'
 		  },
 		  {
 			link: '#',
+			id: 2,
 			title: 'cccc',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/288016_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'cccc',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/288016_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'cccc',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/288016_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
+			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1',
+		  }
 		]
 	}else if(type === 'new'){
 		return [
 		  {
+			id: 1,
 			link: '#',
+			title: 'bbbb',
+			img: 'https://rpic.douyucdn.cn/asrpic/210831/1126960_1617.png/dy1'
+		  },
+		  {
+			link: '#',
+			id: 2,
 			title: 'cccc',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/288016_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
-		  {
-			link: '#',
-			title: 'aaaa',
-			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1'
-		  },
+			img: 'https://rpic.douyucdn.cn/asrpic/210831/757122_1617.png/dy1',
+		  }
+
 		]
 	}else{
 		return [

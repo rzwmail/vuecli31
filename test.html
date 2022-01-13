@@ -1,68 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8"> 
-<title>菜鸟教程(runoob.com)</title>
-<style> 
-#main
-{
-	width:500px;
-	height:300px;
-	border:1px solid black;
-	display:flex;
-}
+  <meta charset="utf-8">
+  <title>菜鸟教程(runoob.com)</title>
+  <style>
+    .container {
+      width: 0;
+      height: 0;
+      border: 100px solid;
+      border-color: transparent red transparent transparent;
+      position: relative;
+    }
 
-#main div
-{
-	/* flex:1; */
-}
-</style>
+    .container::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border: 100px solid;
+      border-color: transparent white transparent transparent;
+      left: -90px;
+      top: -100px;
+      position: absolute;
+    }
+
+  </style>
 </head>
+
 <body>
+  <p>111</p>
+  <div class="container">
 
-<div id="main">
-  <div style="background-color:coral;">红1111色</div>
-  <div style="background-color:lightblue;">蓝1111色</div>  
-  <div style="background-color:lightgreen;">带有更多内容的绿色 div</div>
-</div>
+  </div>
 
-<div style="display: flex; align-items:baseline; flex-wrap:wrap;">
-    <p style="flex: 1;"><b>注意:</b> Internet Explorer 9 及更safasdfasdfa
-        早版本不支持 flex 属性。abcd sf fsdf gsggsgsagsagd sagf gsdgsg sgd sgsdgsg sg gsg sg sgdsg </p>
-<p style="flex: 1;"><b>注意:</b> Internet Explorer 10 通过 -as
-    fdsafdms-flex 属性来支
-    asfd
-    safd
-    asdf
-    as
-    dfa
-    sd
-    fa
-    sd
-    fa
-    sdf
-    assafdms-flex 属性来支
+  <div style="display: flex; align-items: center; background-color: green; height: 300px;">
+    <div style="background-color:grey; flex: 1;height: 100%; ">
+      <p>11111</p>
+      <p>222222</p>
 
-    as
-    df持。 IE11asfasfd 及更新
-    版本完全支持 flex 属性 (不需要 -ms- 前缀)。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
-<p style="flex: 1;"><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
+    </div>
+    <div>
+      <p>11111</p>
+      <p>222222</p>
+      <p>11111</p>
+      <p>222222</p>
+      <p>11111</p>
+      <p>222222</p>
+    </div>
+    <div style="flex: 3;background-color: pink;">
+      <p>11111</p>
+      <p>11111</p>
+      <p>222222</p>
+    </div>
+  </div>
 
-</div>
 </body>
+
 </html>

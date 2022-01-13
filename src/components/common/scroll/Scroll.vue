@@ -17,7 +17,7 @@ export default {
     },
     isPullUpload: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {

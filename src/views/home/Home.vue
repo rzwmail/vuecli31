@@ -32,11 +32,6 @@
     </scroll>
 
     <back-top @click.native="backClick" v-show="isBackTopShow" />
-    <ul>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-    </ul>
   </div>
 </template>
 
@@ -93,14 +88,14 @@ export default {
   },
   mounted() {
     let func = function (a, b) {
-      console.log(112233, a);
+      // console.log(112233, a);
     };
     const refresh = debounce(func, 1000);
     // this.$bus.$on('imgloaded', (msg)=>{console.log(msg); refresh(999,888)})
   },
   activated(){
     this.$refs.myscroll.scrollTo(0,this.saveY)
-    this.$refs.myscroll.refresh()
+    this.$refs.myscroll.scroll.refresh()
   },
   deactivated(){
     this.saveY = this.$refs.myscroll.scroll.y
@@ -142,7 +137,7 @@ export default {
       //判断回到顶部是否显示
       this.isBackTopShow = position.y < -400 ? true : false;
       //判断选项是否吸顶
-      this.isTabFixed = -position.y > this.tabOffsetTop ? true : false;
+      this.isTabFixed = -position.y > this.tabOffsetTop-44 ? true : false;
     },
     loadMore() {
       this.getGoods(this.currentType);
@@ -154,7 +149,7 @@ export default {
     },
     swiperImgLoad() {
       this.tabOffsetTop = this.$refs.mytabcontrol2.$el.offsetTop;
-      console.log(this.tabOffsetTop);
+      // console.log(this.tabOffsetTop);
     },
   },
 };
@@ -170,18 +165,18 @@ export default {
   color: white;
 }
 .content {
-  /* height: calc(100vh - 93px);
-  overflow: hidden; */
+  height: calc(100vh - 93px);
   overflow: hidden;
 
-  position: absolute;
+  /* position: absolute;
   top: 44px;
   bottom: 49px;
   left: 0;
-  right: 0;
+  right: 0; */
 }
 .tab-control1 {
-  position: relative;
+  position: absolute;
+  width: 100%;
   z-index: 9;
 }
 </style>

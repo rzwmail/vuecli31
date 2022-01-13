@@ -25,6 +25,8 @@ export default {
     }
     .nav-bar .left, .right {
         width: 60px;
+        /* position: relative; */
+        text-align: center;
     }
     .nav-bar .center {
         flex: 1;
