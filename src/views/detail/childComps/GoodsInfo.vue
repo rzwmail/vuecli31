@@ -4,7 +4,7 @@
           {{goodsinfo.name}}[2021年流行冬装，限量直销]
       </div>
       <div>
-        <span style="color:red;font-size: 30px;">￥{{goodsinfo.price}}</span>
+        <span style="color:red;font-size: 30px;">￥{{goodsinfo.price|priceFormat}}</span>
         <span style="margin-left: 20px;"><s>￥1999</s></span>
         <span style="background-color:pink;border-radius:5px;padding:3px;margin-left:20px">活动价</span>
       </div>
@@ -49,6 +49,14 @@ export default {
   },
   methods: {
   
+  },
+  filters: {
+    priceFormat(val){
+      if(parseInt(val) >=100){
+        return val/100+'百'
+      }
+
+    }
   }
 }
 </script>

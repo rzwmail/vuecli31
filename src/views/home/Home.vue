@@ -47,7 +47,7 @@ import Feature from "./childComps/Feature.vue";
 import { getHomeMultiData, getHomeGoods } from "@/network/home.js";
 import Scroll from "../../components/common/scroll/Scroll.vue";
 import BackTop from "../../components/common/BackTop.vue";
-import { debounce } from "../../common/utils.js";
+import { debounce, mymixin } from "../../common/utils.js";
 
 export default {
   name: "Home",
@@ -88,7 +88,6 @@ export default {
   },
   mounted() {
     let func = function (a, b) {
-      // console.log(112233, a);
     };
     const refresh = debounce(func, 1000);
     // this.$bus.$on('imgloaded', (msg)=>{console.log(msg); refresh(999,888)})
@@ -149,7 +148,6 @@ export default {
     },
     swiperImgLoad() {
       this.tabOffsetTop = this.$refs.mytabcontrol2.$el.offsetTop;
-      // console.log(this.tabOffsetTop);
     },
   },
 };

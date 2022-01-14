@@ -36,6 +36,7 @@ export default {
     if(this.probeType >=2 ){
       this.scroll.on('scroll', position =>{
         this.$emit('scroll',position)
+        this.$emit('contentScroll',position)
       })
     }
     if (this.isPullUpload){
@@ -53,7 +54,4 @@ export default {
 </script>
 
 <style scoped>
-.mywrapper {
-  /* height: 100%; */
-}
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <img :src="item" alt="" 
+  <div style="width:100%; display: flex;  flex-wrap: wrap;">
+      <img :src="item" alt=""  style="flex:1; margin: 20px"
       @load="imgLoad"
       v-for="(item,index) in detailInfo.topImages" :key="index"/>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 
-export default {
+ export default {
   name: "DetailGoodsInfo",
   components: {
   
