@@ -16,8 +16,9 @@
       <store-info :storeinfo="detailInfo" />
       <detail-goods-info :detailInfo="detailInfo" @imgLoad="imgLoad" />
       <param-info ref="myparam" />
+      {{detailInfo}}
     </scroll>
-    <bottom-bar />
+    <bottom-bar @addCart="addToCart" />
     <back-top @click.native="backClick" v-show="isBackTopShow" />
   </div>
 </template>
@@ -90,6 +91,15 @@ export default {
         }
       }
     },
+    addToCart(){
+      const product = {}
+      product.id = this.detailInfo.id
+      product.image = this.detailInfo.topImages[0]
+      product.title = this.detailInfo.title
+      product.price = this.detailInfo.price
+      product.meme =  this.detailInfo.meme
+      this.$store.dispatch('addCart', product)
+    }
   },
 };
 </script>

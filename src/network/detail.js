@@ -13,6 +13,7 @@ import {
             {
                 id:1, 
                 detail: {
+                    id: 1,
                     name: 'aaaa',
                     price: 666,
                     meme : 'haha1111',
@@ -26,6 +27,7 @@ import {
             {
                 id:2, 
                 detail: {
+                    id: 2,
                     name: 'bbbb',
                     price: 888,
                     meme : 'haha2222',
