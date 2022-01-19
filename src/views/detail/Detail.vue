@@ -48,13 +48,15 @@ export default {
     ParamInfo,
     BottomBar,
   },
-  props: {},
+  
   data() {
     return {
       iid: null,
       detailInfo: {},
       themetopYs: [],
       getTopYs: null,
+      message: 'mytoast',
+      show: false
     };
   },
   created() {
@@ -77,7 +79,6 @@ export default {
       this.getTopYs();
     },
     titleClick(index) {
-      console.log(index);
       this.$refs.myscroll.scrollTo(0, -this.themetopYs[index] + 44);
     },
     contentScroll(position) {
@@ -91,14 +92,15 @@ export default {
         }
       }
     },
-    addToCart(){
+    async addToCart(){
       const product = {}
       product.id = this.detailInfo.id
       product.image = this.detailInfo.topImages[0]
       product.title = this.detailInfo.title
       product.price = this.detailInfo.price
       product.meme =  this.detailInfo.meme
-      this.$store.dispatch('addCart', product)
+      const res = await this.$store.dispatch('addCart', product)
+      this.$toast.show(res,1500)
     }
   },
 };

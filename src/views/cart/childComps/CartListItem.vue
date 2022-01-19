@@ -1,18 +1,18 @@
 <template>
   <div>
 	  <div class="shop-item">
-		  <div class="item-selector">
-			  <check-button :isCheck="product.checked" @click.native="checkClick"/>
+		  <div class="item-selector"  @click="checkClick">
+			  <check-button :isCheck="product.checked"/>
 		  </div>
 		  <div class="item-img">
 			  <img :src="product.image" alt="">
 		  </div>
 		  <div class="item-info">
-			  <div class="title">{{product.title}}asfdlkjsdfsdfdsfdsfsdfsdfasdfasdfasdfasdfasfdasdfaldfjl1</div>
-			  <div class="meme">{{product.meme}}1</div>
+			  <div class="title">{{product.title}}</div>
+			  <div class="meme">{{product.meme}}</div>
 			  <div class="info-bottom">
-				  <div class="price">￥{{product.price}}1</div>
-				  <div class="count">×{{product.count}}1</div>
+				  <div class="price">￥{{product.price}}</div>
+				  <div class="count">×{{product.count}}</div>
 			  </div>
 		  </div>
 	  </div>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
 	  checkClick(){
-		  this.product.checked = !this.product.checked
+		  this.$store.commit('change_checked', this.product)
 	  }
   },
   created() {
@@ -59,9 +59,11 @@ export default {
 	}
 	.item-selector {
 		width: 30px;
+		height: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin: 10px
 	}
 	.item-img img{
 		height: 80px;
@@ -70,6 +72,7 @@ export default {
 		border-radius: 8px;
 	}
 	.item-info{
+		flex: 1;
 		font-size: 17px;
 		color: #333;
 		padding: 5px 15px;
